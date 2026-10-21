@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angariar Imóveis | Venda seu Imóvel</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate-50 */
+        }
+        
+        /* Custom scrollbar for selects */
+        select::-webkit-scrollbar {
+            width: 8px;
+        }
+        select::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+        
+        /* Form Field Styles */
+        .form-input {
+            @apply w-full px-4 py-3 mt-1 text-gray-700 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all duration-200 shadow-sm;
+        }
+
+        .form-label {
+            @apply block text-sm font-semibold text-gray-700 mb-1;
+        }
+
+        /* Hero Background with overlay */
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="absolute top-0 left-0 w-full z-10 p-6 flex justify-between items-center max-w-7xl mx-auto right-0">
+        <div class="flex items-center gap-2">
+            <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            <span class="text-white text-xl font-bold tracking-tight">ImobiConnect</span>
+        </div>
+        <a href="#cadastro" class="text-white text-sm font-medium hover:text-indigo-300 transition-colors">Cadastrar Imóvel</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg relative pt-32 pb-48 px-4 flex items-center justify-center text-center">
+        <div class="max-w-3xl relative z-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/20 text-indigo-200 text-sm font-semibold tracking-wider mb-6 border border-indigo-500/30">
+                VENDA OU ALUGUE MAIS RÁPIDO
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                Cadastre seu imóvel com a melhor equipe da região
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
+                Deixe o trabalho duro com a gente. Conectamos seu imóvel aos clientes certos, garantindo a melhor negociação com total segurança.
+            </p>
+            <a href="#cadastro" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-indigo-900 bg-white rounded-full hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                Quero Anunciar Meu Imóvel
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Form Section (Overlapping Hero) -->
+    <main class="flex-grow px-4 -mt-24 relative z-20 pb-24" id="cadastro">
+        <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+            <div class="p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-3">Ficha de Angariação</h2>
+                    <p class="text-gray-500">Preencha os dados abaixo e um de nossos corretores entrará em contato em até 24 horas.</p>
+                </div>
+
+                <form id="propertyForm" class="space-y-8">
+                    
+                    <!-- Informações Pessoais -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-semibold text-gray-800 border-b pb-2">1. Seus Dados</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="md:col-span-2">
+                                <label for="nome" class="form-label">Nome Completo</label>
+                                <input type="text" id="nome" required class="form-input" placeholder="Ex: João da Silva">
+                            </div>
+                            <div>
+                                <label for="email" class="form-label">E-mail</label>
+                                <input type="email" id="email" required class="form-input" placeholder="joao@exemplo.com">
+                            </div>
+                            <div>
+                                <label for="telefone" class="form-label">Telefone / WhatsApp</label>
+                                <input type="tel" id="telefone" required class="form-input" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informações do Imóvel -->
+                    <div class="space-y-6 pt-4">
+                        <h3 class="text-xl font-semibold text-gray-800 border-b pb-2">2. Dados do Imóvel</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="md:col-span-2">
+                                <label for="tipo" class="form-label">Tipo de Imóvel</label>
+                                <select id="tipo" required class="form-input bg-white">
+                                    <option value="" disabled selected>Selecione o tipo...</option>
+                                    <option value="casa">Casa</option>
+                                    <option value="apartamento">Apartamento</option>
+                                    <option value="terreno">Terreno / Lote</option>
+                                    <option value="comercial">Sala Comercial</option>
+                                    <option value="rural">Imóvel Rural</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Select Estado (IBGE) -->
+                            <div>
+                                <label for="estado" class="form-label">Estado (UF)</label>
+                                <div class="relative">
+                                    <select id="estado" required class="form-input bg-white appearance-none pr-10">
+                                        <option value="" disabled selected>Carregando estados...</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Select Cidade (IBGE) -->
+                            <div>
+                                <label for="cidade" class="form-label">Cidade</label>
+                                <div class="relative">
+                                    <select id="cidade" required disabled class="form-input bg-gray-50 cursor-not-allowed appearance-none pr-10 text-gray-400">
+                                        <option value="" disabled selected>Selecione um estado antes</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Area -->
+                    <div class="pt-6">
+                        <button type="submit" class="w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-xl shadow-md text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+                            Enviar Solicitação de Cadastro
+                        </button>
+                        <p class="text-xs text-center text-gray-400 mt-4">Suas informações estão seguras conosco e não serão compartilhadas.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center mt-auto">
+        <p class="text-sm">&copy; 2026 ImobiConnect. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center transform scale-95 transition-transform duration-300 mx-4" id="modalContent">
+            <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-emerald-100 mb-6">
+                <svg class="h-10 w-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Tudo certo!</h3>
+            <p class="text-gray-600 mb-8">Recebemos as informações do seu imóvel. Nossa equipe entrará em contato em breve.</p>
+            <button id="closeModal" class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-xl hover:bg-indigo-700 transition-colors">
+                Entendi
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const estadoSelect = document.getElementById('estado');
+            const cidadeSelect = document.getElementById('cidade');
+            const form = document.getElementById('propertyForm');
+            const modal = document.getElementById('successModal');
+            const modalContent = document.getElementById('modalContent');
+            const btnCloseModal = document.getElementById('closeModal');
+
+            // 1. Fetch States from IBGE
+            async function fetchEstados() {
+                try {
+                    const response = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados');
+                    const estados = await response.json();
+                    
+                    // Sort states alphabetically by name
+                    estados.sort((a, b) => a.nome.localeCompare(b.nome));
+
+                    // Reset options
+                    estadoSelect.innerHTML = '<option value="" disabled selected>Selecione o estado...</option>';
+                    
+                    estados.forEach(estado => {
+                        const option = document.createElement('option');
+                        option.value = estado.sigla; // Use UF (sigla) as the value
+                        option.textContent = `${estado.nome} (${estado.sigla})`;
+                        estadoSelect.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error("Erro ao buscar estados:", error);
+                    estadoSelect.innerHTML = '<option value="" disabled selected>Erro ao carregar estados</option>';
+                }
+            }
+
+            // 2. Fetch Cities based on selected State
+            async function fetchCidades(uf) {
+                // UI feedback while loading
+                cidadeSelect.innerHTML = '<option value="" disabled selected>Carregando cidades...</option>';
+                cidadeSelect.disabled = true;
+                cidadeSelect.classList.add('bg-gray-50', 'cursor-not-allowed', 'text-gray-400');
+                cidadeSelect.classList.remove('bg-white', 'text-gray-700');
+
+                if (!uf) return;
+
+                try {
+                    const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`);
+                    const cidades = await response.json();
+
+                    // Sort cities alphabetically
+                    cidades.sort((a, b) => a.nome.localeCompare(b.nome));
+
+                    cidadeSelect.innerHTML = '<option value="" disabled selected>Selecione a cidade...</option>';
+                    
+                    cidades.forEach(cidade => {
+                        const option = document.createElement('option');
+                        option.value = cidade.nome;
+                        option.textContent = cidade.nome;
+                        cidadeSelect.appendChild(option);
+                    });
+
+                    // Enable city select
+                    cidadeSelect.disabled = false;
+                    cidadeSelect.classList.remove('bg-gray-50', 'cursor-not-allowed', 'text-gray-400');
+                    cidadeSelect.classList.add('bg-white', 'text-gray-700');
+
+                } catch (error) {
+                    console.error("Erro ao buscar cidades:", error);
+                    cidadeSelect.innerHTML = '<option value="" disabled selected>Erro ao carregar cidades</option>';
+                }
+            }
+
+            // Event Listeners
+            estadoSelect.addEventListener('change', (e) => {
+                const selectedUF = e.target.value;
+                fetchCidades(selectedUF);
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent actual form submission to a server
+                
+                // Show custom modal
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            });
+
+            btnCloseModal.addEventListener('click', () => {
+                // Hide modal
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+                
+                // Reset form and disable city dropdown again
+                form.reset();
+                cidadeSelect.innerHTML = '<option value="" disabled selected>Selecione um estado antes</option>';
+                cidadeSelect.disabled = true;
+                cidadeSelect.classList.add('bg-gray-50', 'cursor-not-allowed', 'text-gray-400');
+                cidadeSelect.classList.remove('bg-white', 'text-gray-700');
+            });
+
+            // Initialize the page by fetching states
+            fetchEstados();
+        });
+    </script>
+</body>
+</html>
